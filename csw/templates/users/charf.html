@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <div class="container" style="margin-top: 30px;">
+    {% if submitted %} 
+      Your first form is submitted successfully...Did you finish the registration!
+    
+    {% else %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="col-md-12">
+              <fieldset class="form-group">
+                  <legend class="border-bottom mb-4" style="color: white;">ZIMBABWE APPLICATION FOR REGISTRATION (Character Referrence)</legend>
+                  {{ charf_forms|crispy }}  
+              </fieldset>
+            </div>
+           <br/><br/>
+           <center>
+            <div class="form-group" id="signup-button">
+                <button class="btn" style="color: white; background-color: #fd5e14">Submit</button>
+            </div>
+           </center>
+          </form>
+    {% endif %}      
+    </div>
+    
+{% endblock %}

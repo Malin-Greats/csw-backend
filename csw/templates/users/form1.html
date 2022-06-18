@@ -1,0 +1,72 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <div class="card card-body" style="margin-top: 30px;">
+    {% if submitted %} 
+      Your first form is submitted successfully...Did you finish the registration!
+    
+    {% else %}
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- <div class="col-md-12">
+              
+                  <legend class="border-bottom mb-4" style="color: white;">      ZIMBABWE APPLICATION FOR REGISTRATION (Personal and Contact Details)</legend>
+            </div> -->
+              <div class="row">
+                <!-- <div class="col-sm-6"> 
+                  <div class="fo"> -->
+                    <div class="form-group col-md-6">
+                      {{ forms.title|as_crispy_field }}
+                    
+                  
+                      {{ forms.first_name|as_crispy_field }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                    {{ forms.surname|as_crispy_field }}
+               
+                    {{ forms.date_of_birth|as_crispy_field }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      {{ forms.nationality|as_crispy_field }}
+               
+                      {{ forms.national_id_number|as_crispy_field }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      {{ forms.country_of_birth|as_crispy_field }}
+               
+                      {{ forms.city|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                    {{ forms.Gender|as_crispy_field }}
+               
+                    {{ forms.house_number|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                      {{ forms.mobile_number|as_crispy_field }}
+               
+                      {{ forms.passport_pho|as_crispy_field }}
+                    </div>
+                   
+               <!-- </div>
+              </div> -->
+                  
+            </div> 
+         
+           
+           <br/><br/>
+           <center>
+            <div class="form-group" id="signup-button">
+                <button class="btn" style="color: white; background-color: #fd5e14" >Submit</button>
+          </div>
+           </center>
+          </form>
+    {% endif %}      
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <div class="container">
+        <br/><br/>
+        <h1 style="color: white;">You have been Logged out</h1>
+        <br/><br/>
+        <div class="row g-0">
+            <div class="col-sm-6 col-md-8" id="header-text">
+              <h1 id="header-h1", style="color: white;">Council of Social Workers</h1>
+              <dl>
+                <br/><br/>
+                <dt style="color: #fd5e14;">Vision </dt>
+                <dd style="font-size:medium; color: white;">-To be a respectable regulatory authority for the Social Work profession</dd>
+                <dt style="color: #fd5e14;">Mission </dt>
+                <dd style="font-size:medium; color: white;">-To efficiently and effectively register, regulate and enforce ethical practice</dd>
+                <dt style="color: #fd5e14;">Values </dt>
+                <dd style="font-size:medium ; color: white;">-Diversity, Integrity, Accountability Excellence, Protection</dd>
+              </dl>
+              <a class="btn" style="color: white; background-color: #fd5e14;"type="submit" id="body-link-row">Discover More</a>
+            </div>
+
+            <!-- <div class="col-6 col-md-4" id="header-image"><img src="images/in-liquid-slide-2.svg " alt=""></div> -->
+          </div>
+          <br/><br/>
+        <h5><a href="{% url 'loginPage' %}">Login In Again</a></h5>
+    </div>
+{% endblock %}</title>

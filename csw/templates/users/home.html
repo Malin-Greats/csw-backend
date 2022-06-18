@@ -1,0 +1,25 @@
+
+  
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <div class="container">
+            <div class="row g-0">
+                <div class="col-sm-6 col-md-8" id="header-text">
+                  <h1 id="header-h1">Council of Social Workers</h1>
+                  <dl>
+                    <dt style="color: #fd5e14;">Vision </dt>
+                    <dd style="font-size:medium">-To be a respectable regulatory authority for the Social Work profession</dd>
+                    <dt style="color: #fd5e14;">Mission </dt>
+                    <dd style="font-size:medium">-To efficiently and effectively register, regulate and enforce ethical practice</dd>
+                    <dt style="color: #fd5e14;">Values </dt>
+                    <dd style="font-size:medium">-Diversity, Integrity, Accountability Excellence, Protection</dd>
+                  </dl>
+                  <a class="btn" style="color: white; background-color: #fd5e14;"type="submit" id="body-link-row">Discover More</a>
+                </div>
+
+                <!-- <div class="col-6 col-md-4" id="header-image"><img src="images/in-liquid-slide-2.svg " alt=""></div> -->
+              </div>
+    </div>
+{% endblock content %}
