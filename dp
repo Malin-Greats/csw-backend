@@ -1,0 +1,58 @@
+server {
+    server_name api.csw.org.zw;
+
+    access_log off;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /root/csw-backend;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_set_header X-Real-IP $remote_addr;
+        add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+    }
+}
+
+cd /etc/nginx/sites-enabled
+sudo ln -s ../sites-available/api.csw.org.zw
+
+cd /root/csw-backend
+python3 manage.py runserver 8005
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+member@csw.org.zw
+password: member
+
+
+sudo nano /etc/systemd/system/csw.service
+[Unit]
+Description=gunicorn daemon
+Requires=uniquebooks.socket
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/root/csw-backend
+ExecStart=/root/csw_env/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          liveup.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+
+sudo -u postgres psql
+CREATE DATABASE cswdb;
+CREATE USER csw_user WITH PASSWORD '@csw.org.zw';
+ALTER ROLE csw_user SET client_encoding TO 'utf8';
+ALTER ROLE csw_user SET default_transaction_isolation TO 'read committed';
+ALTER ROLE csw_user SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE cswdb TO csw_user;

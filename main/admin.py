@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from main.models import Admission, Patient, Prescription, Referral, User, Ward
+from main.models import User
 from .forms import CustomUserChangeFrom, CustomUserCreationFrom
 
 
@@ -9,7 +9,7 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationFrom
     form = CustomUserChangeFrom
     model = User
-    list_display = ['username', 'email', 'role', 'is_staff', ]
+    list_display = ['username', 'email', 'is_staff', ]
     fieldsets = (
         ('Personal Info', {'fields': ('username', 'email', 'password',
                            'phone_number', 'first_name', 'last_name')}),

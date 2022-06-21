@@ -160,27 +160,3 @@ class UserList(generics.CreateAPIView):
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserRegisterSerializer
-
-# class UserViewList(generics.CreateAPIView):
-#     serializer_class = UserRegisterSerializer
-#         queryset = User.objects.all('id', 'username', 'password')
-
-#     def get_queryset(self):
-
-
-#         location = self.request.query_params.get('location')
-#         if location is not None:
-#             queryset = queryset.filter(location=location)
-#         return queryset
-
-
-# class UserViewDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserRegisterSerializer
-
-
-# class UserViewSet(viewsets.ModelViewSet):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
-    
-

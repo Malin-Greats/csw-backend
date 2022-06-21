@@ -95,14 +95,14 @@ WSGI_APPLICATION = 'liveup.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': env('POSTGRES_NAME'),
-        # 'USER': env('POSTGRES_USER'),
-        # 'PASSWORD': env('POSTGRES_PASSWORD'),
-        # 'HOST': env('DB_HOST'),
-        # 'PORT': env('DB_PORT')
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_NAME'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT')
     }
 }
 import dj_database_url
@@ -211,10 +211,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 FROM_EMAIL = env('FROM_EMAIL')
 
-REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'main.serializers.CustomUserDetailsSerializer',
-    'PASSWORD_RESET_SERIALIZER': 'main.serializers.CustomPasswordResetSerializer',
-}
+# REST_AUTH_SERIALIZERS = {
+#     'USER_DETAILS_SERIALIZER': 'main.serializers.CustomUserDetailsSerializer',
+#     'PASSWORD_RESET_SERIALIZER': 'main.serializers.CustomPasswordResetSerializer',
+# }
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_USE_TLS = True

@@ -6,12 +6,6 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.conf import settings
 
-from main.views import MemberViewSet,  RegisterMemberViewSet, RegisterUserAPIView
-
-router = DefaultRouter()
-router.register(r'members', MemberViewSet)
-router.register(r'new_member', RegisterMemberViewSet)
-
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -28,8 +22,6 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('browsable-api-auth/', include('rest_framework.urls')),
     path('auth/', include('dj_rest_auth.urls')),
-    path('register',RegisterUserAPIView.as_view()),
-        path('', include(router.urls)),
     re_path(r'^swagger(?P<format>\.json|\.yaml)$',
             schema_view.without_ui(cache_timeout=0),
             name='schema-json'),
