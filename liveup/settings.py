@@ -34,7 +34,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = "*"
+# ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -221,3 +222,4 @@ REST_AUTH_SERIALIZERS = {
 # EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 # EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 # EMAIL_PORT = 587
+CSRF_TRUSTED_ORIGINS = ['http://api.csw.org.zw', 'https://api.csw.org.zw', 'http://127.0.0.1:8005']
